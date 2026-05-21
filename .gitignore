@@ -1,0 +1,62 @@
+# ============================================================
+# .gitignore — Tells Git which files to NEVER upload to GitHub
+# Think of this as a "do not pack" list when sending your
+# project online. Private and unnecessary files stay local.
+# ============================================================
+
+
+# --- SECRET FILES ---
+# These contain your API keys and passwords.
+# NEVER upload these — anyone who sees them can use your account.
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+*.env
+
+
+# --- PYTHON VIRTUAL ENVIRONMENT ---
+# The venv folder contains thousands of files (installed libraries).
+# These don't need to be on GitHub — anyone can recreate them
+# by running: pip install -r requirements.txt
+venv/
+env/
+.venv/
+ENV/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+
+# --- NODE / REACT (for your mova-ui folder) ---
+# node_modules contains hundreds of thousands of files.
+# Anyone can recreate it by running: yarn install
+mova-ui/node_modules/
+node_modules/
+mova-ui/build/
+build/
+mova-ui/.env
+mova-ui/.env.local
+
+
+# --- VS CODE SETTINGS ---
+# Your personal editor settings — not needed by others
+.vscode/
+.idea/
+
+
+# --- OPERATING SYSTEM FILES ---
+# Files your computer creates automatically — not part of your code
+.DS_Store          # Mac creates this in every folder
+Thumbs.db          # Windows creates this
+desktop.ini        # Windows folder settings
+
+
+# --- LOGS AND TEMP FILES ---
+*.log
+*.tmp
+*.temp
+pip-log.txt
