@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MOVA — Transport & Mobility Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy: { 900: '#0a0f1e', 800: '#0d1526', 700: '#111d35' },
+              mova: { DEFAULT: '#2563eb', light: '#3b82f6', dark: '#1d4ed8' }
+            },
+            animation: {
+              'bounce-dot': 'bounce 1s infinite',
+              'fade-in': 'fadeIn 0.3s ease-in-out',
+              'slide-up': 'slideUp 0.3s ease-out'
+            },
+            keyframes: {
+              fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+              slideUp: { '0%': { opacity: '0', transform: 'translateY(10px)' },
+                         '100%': { opacity: '1', transform: 'translateY(0)' } }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; font-family: 'Inter', -apple-system, sans-serif;
+             background: #0a0f1e; }
+      ::-webkit-scrollbar { width: 4px; }
+      ::-webkit-scrollbar-track { background: #0d1526; }
+      ::-webkit-scrollbar-thumb { background: #2563eb; border-radius: 2px; }
+      .dot-1 { animation: bounce 1s infinite 0ms; }
+      .dot-2 { animation: bounce 1s infinite 150ms; }
+      .dot-3 { animation: bounce 1s infinite 300ms; }
+      @keyframes bounce {
+        0%, 60%, 100% { transform: translateY(0); }
+        30% { transform: translateY(-6px); }
+      }
+      /* Animated gradient line for the header */
+      @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      .gradient-line {
+        background: linear-gradient(90deg, #2563eb, #7c3aed, #2563eb);
+        background-size: 200% 100%;
+        animation: gradientShift 3s ease infinite;
+        height: 2px;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
