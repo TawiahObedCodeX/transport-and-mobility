@@ -1,31 +1,120 @@
-/* index.css — Global styles for the whole MOVA chat app
- *
- * These styles apply to EVERYTHING on the page.
- * We reset margins/paddings and set a default background.
- */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* The * selector means "every single element on the page" */
-* {
-  margin: 0;                     /* Remove default spacing around elements */
-  padding: 0;                    /* Remove default internal spacing */
-  box-sizing: border-box;        /* Make width/height include padding and borders */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.75rem;
+    --sidebar: 0 0% 98%;
+    --sidebar-foreground: 222.2 84% 4.9%;
+    --sidebar-border: 214.3 31.8% 91.4%;
+    --sidebar-accent: 221.2 83.2% 53.3%;
+    --sidebar-accent-foreground: 210 40% 98%;
+  }
 }
 
-/* The html element is the very top of the page structure */
-html {
-  height: 100%;                  /* Fill the full height of the browser window */
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
 }
 
-/* The body element is what you see on screen */
-body {
-  height: 100%;                  /* Fill the full height */
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, sans-serif;  /* Use the system's default font */
-  background-color: #f0f2f5;    /* Light grey background like chat apps */
-  -webkit-font-smoothing: antialiased;  /* Make text look smoother on Mac */
+@layer utilities {
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/20 rounded-full;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/40;
+  }
+  .glass {
+    @apply bg-white/80 backdrop-blur-xl border border-white/20 shadow-sm;
+  }
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-xl border border-white/30 shadow-lg shadow-black/[0.03];
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
 }
 
-/* The #root div is where React puts our entire app */
-#root {
-  height: 100%;                  /* Fill the full browser window height */
+code {
+  @apply text-sm font-mono;
+}
+
+pre {
+  @apply overflow-x-auto rounded-lg bg-slate-50 p-4 text-sm border;
+}
+
+pre code {
+  @apply bg-transparent p-0;
+}
+
+markdown p {
+  @apply leading-relaxed;
+}
+
+markdown ul {
+  @apply list-disc pl-5 space-y-1;
+}
+
+markdown ol {
+  @apply list-decimal pl-5 space-y-1;
+}
+
+markdown h1, markdown h2, markdown h3 {
+  @apply font-semibold text-foreground mt-4 mb-2;
+}
+
+markdown h1 { @apply text-lg; }
+markdown h2 { @apply text-base; }
+markdown h3 { @apply text-sm; }
+
+markdown blockquote {
+  @apply border-l-4 border-mova-300 pl-4 italic text-muted-foreground;
+}
+
+markdown table {
+  @apply w-full border-collapse text-sm;
+}
+
+markdown th, markdown td {
+  @apply border px-3 py-2 text-left;
+}
+
+markdown th {
+  @apply bg-muted font-medium;
+}
+
+markdown a {
+  @apply text-mova-600 underline underline-offset-2 hover:text-mova-700;
 }
